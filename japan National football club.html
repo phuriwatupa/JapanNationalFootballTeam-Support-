@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan National Football Team - Samurai Blue</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        samurai: {
+                            navy: '#030A1C',
+                            dark: '#0A192F',
+                            blue: '#002D72',
+                            bright: '#0055D4',
+                            accent: '#E60012',
+                            gold: '#D4AF37'
+                        }
+                    },
+                    fontFamily: {
+                        kanit: ['Kanit', 'sans-serif'],
+                        teko: ['Teko', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Teko:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #030A1C;
+            color: #F3F4F6;
+        }
+        .heading-font {
+            font-family: 'Teko', 'Kanit', sans-serif;
+            letter-spacing: 1px;
+        }
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(0, 85, 212, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 85, 212, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .glass-card {
+            background: rgba(10, 25, 47, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 85, 212, 0.5);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030A1C;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #002D72;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E60012;
+        }
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #60A5FA 0%, #0055D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-card border-b border-blue-900/40 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-full bg-gradient-to-tr from-samurai-blue to-samurai-bright flex items-center justify-center p-0.5 shadow-lg group-hover:scale-105 transition-transform">
+                        <div class="w-full h-full bg-samurai-navy rounded-full flex items-center justify-center relative overflow-hidden">
+                            <span class="text-samurai-accent text-lg font-black">JFA</span>
+                            <div class="absolute -bottom-1 w-full h-1.5 bg-samurai-accent"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="block text-lg font-bold tracking-wider text-white heading-font leading-none uppercase">Samurai Blue</span>
+                        <span class="text-xs text-blue-400 font-medium">ทีมชาติญี่ปุ่น | 日本代表</span>
+                    </div>
+                </a>
+
+                <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                    <a href="#hero" class="text-gray-300 hover:text-samurai-bright transition-colors">หน้าแรก</a>
+                    <a href="#history" class="text-gray-300 hover:text-samurai-bright transition-colors">ประวัติ</a>
+                    <a href="#achievements" class="text-gray-300 hover:text-samurai-bright transition-colors">ผลงาน</a>
+                    <a href="#players" class="text-gray-300 hover:text-samurai-bright transition-colors">รายชื่อผู้เล่น</a>
+                </nav>
+
+                <div class="hidden md:flex items-center">
+                    <a href="#players" class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-samurai-accent to-red-700 hover:from-red-600 hover:to-samurai-accent text-white font-semibold text-sm shadow-md transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-shirt text-xs"></i>
+                        <span>ขุนพลซามูไร</span>
+                    </a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="mobileMenuBtn" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars text-2xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden glass-card border-t border-blue-900/40 px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-samurai-bright/20">หน้าแรก</a>
+            <a href="#history" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-samurai-bright/20">ประวัติ</a>
+            <a href="#achievements" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-samurai-bright/20">ผลงาน</a>
+            <a href="#players" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-samurai-bright/20">รายชื่อผู้เล่น</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- 1 & 2. HERO SECTION -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center bg-grid-pattern overflow-hidden py-16">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-samurai-bright/20 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-samurai-accent/15 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-samurai-bright/10 border border-samurai-bright/30 text-blue-400 text-sm font-semibold mb-6">
+                    <span class="w-2 h-2 rounded-full bg-samurai-accent animate-pulse"></span>
+                    JAPAN NATIONAL FOOTBALL TEAM • SAMURAI BLUE
+                </div>
+
+                <h1 class="text-5xl sm:text-7xl lg:text-9xl font-extrabold uppercase tracking-tight mb-4 heading-font leading-none">
+                    ทีมชาติญี่ปุ่น <span class="text-gradient-blue">(JAPAN)</span>
+                </h1>
+                
+                <p class="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed mb-8">
+                    "ศักดิ์ศรี จิตวิญญาณ และความมุ่งมั่นแห่งซามูไร" <br class="hidden sm:inline">
+                    ยอดทีมฟุตบอลอันดับ 1 ของทวีปเอเชีย สู่เป้าหมายอันยิ่งใหญ่ในเวทีระดับโลก
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                    <a href="#players" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-samurai-bright hover:bg-blue-600 text-white font-bold text-lg shadow-lg hover:shadow-samurai-bright/40 transition-all flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-shirt"></i>
+                        ดูรายชื่อผู้เล่น
+                    </a>
+                    <a href="#history" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card hover:bg-white/10 text-white font-bold text-lg border border-white/20 transition-all flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-book-open"></i>
+                        ประวัติการก่อตั้ง
+                    </a>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                    <div class="glass-card p-5 rounded-2xl text-center border-t-2 border-t-samurai-bright">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-white heading-font">แชมป์ 4 สมัย</div>
+                        <div class="text-xs sm:text-sm text-gray-400 mt-1">AFC Asian Cup</div>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl text-center border-t-2 border-t-samurai-accent">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-white heading-font">7 ครั้งติด</div>
+                        <div class="text-xs sm:text-sm text-gray-400 mt-1">ฟุตบอลโลกรอบสุดท้าย</div>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl text-center border-t-2 border-t-samurai-bright">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-white heading-font">รองแชมป์</div>
+                        <div class="text-xs sm:text-sm text-gray-400 mt-1">FIFA Confederations Cup 2001</div>
+                    </div>
+                    <div class="glass-card p-5 rounded-2xl text-center border-t-2 border-t-yellow-500">
+                        <div class="text-3xl sm:text-4xl font-extrabold text-white heading-font">ท็อปเอเชีย</div>
+                        <div class="text-xs sm:text-sm text-gray-400 mt-1">อันดับฟีฟ่าระดับแถวหน้า</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. HISTORY SECTION (ประวัติการก่อตั้ง) -->
+        <section id="history" class="py-24 bg-samurai-dark/50 relative border-t border-blue-900/30">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-samurai-bright mb-2">FOUNDATION & HISTORY</h2>
+                    <h3 class="text-4xl sm:text-5xl font-extrabold text-white heading-font">ประวัติการก่อตั้งทีมชาติญี่ปุ่น</h3>
+                    <div class="w-20 h-1 bg-samurai-accent mx-auto mt-4 rounded-full"></div>
+                    <p class="text-gray-300 mt-4 text-base sm:text-lg">
+                        จุดเริ่มต้นตั้งแต่ ค.ศ. 1921 สู่การยกระดับวงการฟุตบอลด้วยเจลีกและการก้าวขึ้นเป็นมหาอำนาจลูกหนังเอเชีย
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <div class="glass-card p-8 rounded-2xl border-l-4 border-l-samurai-bright">
+                            <h4 class="text-2xl font-bold text-white mb-3 flex items-center gap-3">
+                                <i class="fa-solid fa-flag-checkered text-samurai-bright"></i>
+                                จุดเริ่มต้น ค.ศ. 1921 (พ.ศ. 2464)
+                            </h4>
+                            <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                                สมาคมฟุตบอลญี่ปุ่น (Japan Football Association - JFA) ก่อตั้งขึ้นอย่างเป็นทางการในปี ค.ศ. 1921 และเข้าร่วมเป็นสมาชิกฟีฟ่าในปี 1929 พร้อมสัญลักษณ์ประจำทีมคือ **อีกา 3 ขา (Yatagarasu)** ในตำนานเทพนิยายญี่ปุ่น ซึ่งสื่อถึงการนำทางไปสู่ชัยชนะ
+                            </p>
+                        </div>
+
+                        <div class="glass-card p-8 rounded-2xl border-l-4 border-l-samurai-accent">
+                            <h4 class="text-2xl font-bold text-white mb-3 flex items-center gap-3">
+                                <i class="fa-solid fa-rocket text-samurai-accent"></i>
+                                การปฏิวัติวงการด้วย J.League 1993
+                            </h4>
+                            <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                                การก่อตั้งลีกฟุตบอลอาชีพ J.League ในปี 1993 พลิกโฉมฟุตบอลญี่ปุ่นจากกีฬาสมัครเล่นสู่อาชีพเต็มรูปแบบ วางรากฐานระบบเยาวชนที่แข็งแกร่ง นำไปสู่ความสำเร็จคว้าแชมป์เอเชียนคัพครั้งแรกในปี 1992 และเข้าร่วมฟุตบอลโลกรอบสุดท้ายครั้งแรกในปี 1998
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Component -->
+                    <div class="glass-card p-8 rounded-3xl relative">
+                        <h4 class="text-2xl font-bold text-white mb-8 border-b border-gray-700 pb-4">
+                            <i class="fa-solid fa-timeline text-samurai-bright mr-2"></i> ไทม์ไลน์สำคัญ (Timeline)
+                        </h4>
+                        
+                        <div class="space-y-8 relative before:absolute before:inset-0 before:left-4 before:w-0.5 before:bg-blue-800">
+                            <div class="relative pl-10">
+                                <span class="absolute left-2 -translate-x-1/2 top-1.5 w-5 h-5 rounded-full bg-samurai-bright border-4 border-samurai-navy"></span>
+                                <span class="text-xs font-extrabold text-samurai-bright tracking-widest uppercase">ค.ศ. 1921</span>
+                                <h5 class="text-lg font-bold text-white mt-1">ก่อตั้งสมาคมฟุตบอลญี่ปุ่น (JFA)</h5>
+                                <p class="text-xs text-gray-400 mt-1">จุดเริ่มต้นอย่างเป็นทางการของวงการฟุตบอลญี่ปุ่น</p>
+                            </div>
+
+                            <div class="relative pl-10">
+                                <span class="absolute left-2 -translate-x-1/2 top-1.5 w-5 h-5 rounded-full bg-samurai-accent border-4 border-samurai-navy"></span>
+                                <span class="text-xs font-extrabold text-samurai-accent tracking-widest uppercase">ค.ศ. 1992 & 1998</span>
+                                <h5 class="text-lg font-bold text-white mt-1">แชมป์เอเชียครั้งแรก & ไปบอลโลกครั้งแรก</h5>
+                                <p class="text-xs text-gray-400 mt-1">คว้าแชมป์เอเชียนคัพ 1992 และทะยานสู่ฟุตบอลโลก 1998 ที่ฝรั่งเศส</p>
+                            </div>
+
+                            <div class="relative pl-10">
+                                <span class="absolute left-2 -translate-x-1/2 top-1.5 w-5 h-5 rounded-full bg-yellow-500 border-4 border-samurai-navy"></span>
+                                <span class="text-xs font-extrabold text-yellow-500 tracking-widest uppercase">ค.ศ. 2002 & 2011</span>
+                                <h5 class="text-lg font-bold text-white mt-1">เจ้าภาพบอลโลก & แชมป์เอเชียนคัพ สมัยที่ 4</h5>
+                                <p class="text-xs text-gray-400 mt-1">เจ้าภาพร่วมฟุตบอลโลก 2002 และคว้าแชมป์เอเชียสมัยที่ 4 ในปี 2011</p>
+                            </div>
+
+                            <div class="relative pl-10">
+                                <span class="absolute left-2 -translate-x-1/2 top-1.5 w-5 h-5 rounded-full bg-samurai-bright border-4 border-samurai-navy"></span>
+                                <span class="text-xs font-extrabold text-samurai-bright tracking-widest uppercase">ค.ศ. 2022</span>
+                                <h5 class="text-lg font-bold text-white mt-1">ชัยชนะสะเทือนโลก ฟุตบอลโลก กาตาร์</h5>
+                                <p class="text-xs text-gray-400 mt-1">ล้มเยอรมนีและสเปน คว้าแชมป์กลุ่ม E ในฟุตบอลโลก 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ACHIEVEMENTS SECTION (ผลงานเกียรติยศ) -->
+        <section id="achievements" class="py-24 bg-samurai-dark/60 border-t border-blue-900/40 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-samurai-bright mb-2">HONORS & TROPHIES</h2>
+                    <h3 class="text-4xl sm:text-5xl font-extrabold text-white heading-font">ผลงานเกียรติยศ</h3>
+                    <div class="w-20 h-1 bg-samurai-accent mx-auto mt-4 rounded-full"></div>
+                    <p class="text-gray-300 mt-4 text-base sm:text-lg">
+                        เกียรติประวัติสูงสุดในทวีปเอเชียและเวทีระดับนานาชาติอันน่าภาคภูมิใจ
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- AFC Asian Cup -->
+                    <div class="glass-card p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform duration-300 border-t-4 border-t-yellow-500">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-yellow-500/10 flex items-center justify-center text-yellow-500 text-4xl">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-2">AFC Asian Cup</h4>
+                        <div class="text-3xl font-extrabold text-yellow-400 heading-font mb-3">แชมป์ 4 สมัย</div>
+                        <p class="text-sm text-gray-300 mb-4">
+                            ครองสถิติแชมป์เอเชียนคัพมากที่สุดในประวัติศาสตร์เอเชีย
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs font-semibold">1992</span>
+                            <span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs font-semibold">2000</span>
+                            <span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs font-semibold">2004</span>
+                            <span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs font-semibold">2011</span>
+                        </div>
+                    </div>
+
+                    <!-- FIFA World Cup -->
+                    <div class="glass-card p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform duration-300 border-t-4 border-t-samurai-bright">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-samurai-bright/10 flex items-center justify-center text-samurai-bright text-4xl">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-2">FIFA World Cup</h4>
+                        <div class="text-3xl font-extrabold text-blue-400 heading-font mb-3">รอบ 16 ทีมสุดท้าย (4 ครั้ง)</div>
+                        <p class="text-sm text-gray-300 mb-4">
+                            ผ่านเข้ารอบสุดท้าย 7 ครั้งติดต่อกันตั้งแต่ปี 1998 ถึงปัจจุบัน
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <span class="px-3 py-1 rounded-full bg-samurai-bright/20 text-blue-300 text-xs font-semibold">2002</span>
+                            <span class="px-3 py-1 rounded-full bg-samurai-bright/20 text-blue-300 text-xs font-semibold">2010</span>
+                            <span class="px-3 py-1 rounded-full bg-samurai-bright/20 text-blue-300 text-xs font-semibold">2018</span>
+                            <span class="px-3 py-1 rounded-full bg-samurai-bright/20 text-blue-300 text-xs font-semibold">2022</span>
+                        </div>
+                    </div>
+
+                    <!-- FIFA Confederations Cup -->
+                    <div class="glass-card p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform duration-300 border-t-4 border-t-samurai-accent">
+                        <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-samurai-accent/10 flex items-center justify-center text-samurai-accent text-4xl">
+                            <i class="fa-solid fa-medal"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-white mb-2">FIFA Confederations Cup</h4>
+                        <div class="text-3xl font-extrabold text-red-400 heading-font mb-3">รองแชมป์ (2001)</div>
+                        <p class="text-sm text-gray-300 mb-4">
+                            สร้างผลงานยอดเยี่ยมที่สุดของทีมจากทวีปเอเชียในรายการนี้
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-2">
+                            <span class="px-3 py-1 rounded-full bg-samurai-accent/20 text-red-300 text-xs font-semibold">รองแชมป์ ปี 2001</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. INTERACTIVE PLAYER ROSTER (รายชื่อผู้เล่น) -->
+        <section id="players" class="py-24 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-samurai-accent mb-2">SQUAD ROSTER</h2>
+                    <h3 class="text-4xl sm:text-5xl font-extrabold text-white heading-font">รายชื่อผู้เล่นขุนพลซามูไรบลู</h3>
+                    <div class="w-20 h-1 bg-samurai-bright mx-auto mt-4 rounded-full"></div>
+                    <p class="text-gray-300 mt-4 text-base sm:text-lg">
+                        รวมซูเปอร์สตาร์ชั้นนำที่ค้าแข้งในลีกยุโรปและเจลีก
+                    </p>
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12" id="filterContainer">
+                    <button onclick="filterPlayers('all')" class="filter-btn active px-6 py-2.5 rounded-full text-sm font-semibold border border-samurai-bright bg-samurai-bright text-white transition-all cursor-pointer">
+                        ทั้งหมด (All)
+                    </button>
+                    <button onclick="filterPlayers('GK')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-700 bg-samurai-dark text-gray-300 hover:border-samurai-bright transition-all cursor-pointer">
+                        ผู้รักษาประตู (GK)
+                    </button>
+                    <button onclick="filterPlayers('DF')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-700 bg-samurai-dark text-gray-300 hover:border-samurai-bright transition-all cursor-pointer">
+                        กองหลัง (DF)
+                    </button>
+                    <button onclick="filterPlayers('MF')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-700 bg-samurai-dark text-gray-300 hover:border-samurai-bright transition-all cursor-pointer">
+                        กองกลาง (MF)
+                    </button>
+                    <button onclick="filterPlayers('FW')" class="filter-btn px-6 py-2.5 rounded-full text-sm font-semibold border border-gray-700 bg-samurai-dark text-gray-300 hover:border-samurai-bright transition-all cursor-pointer">
+                        กองหน้า (FW)
+                    </button>
+                </div>
+
+                <!-- Players Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="playersGrid">
+                    <!-- Dynamic Rendered -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PLAYER DETAIL MODAL -->
+    <div id="playerModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card max-w-lg w-full rounded-3xl overflow-hidden border border-samurai-bright/40 shadow-2xl relative" id="modalContent"></div>
+    </div>
+
+    <!-- 6. FOOTER WITH DEVELOPER DETAILS AND SOCIAL MEDIA -->
+    <footer class="bg-samurai-navy border-t border-blue-900/60 pt-16 pb-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-gray-800">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-samurai-bright flex items-center justify-center font-bold text-white">JFA</div>
+                        <span class="text-2xl font-bold text-white heading-font">SAMURAI BLUE</span>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        เว็บไซต์พอร์ทัลอย่างเป็นทางการสำหรับแฟนบอลทีมชาติญี่ปุ่น รวบรวมข้อมูลสถิติ ประวัติ และขุนพลนักเตะซามูไรบลู
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">ลิงก์นำทาง</h5>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#hero" class="hover:text-white transition-colors">หน้าแรก</a></li>
+                        <li><a href="#history" class="hover:text-white transition-colors">ประวัติการก่อตั้ง</a></li>
+                        <li><a href="#achievements" class="hover:text-white transition-colors">ผลงานเกียรติยศ</a></li>
+                        <li><a href="#players" class="hover:text-white transition-colors">รายชื่อผู้เล่น</a></li>
+                    </ul>
+                </div>
+
+                <!-- Developer Information Card -->
+                <div class="glass-card p-6 rounded-2xl border border-samurai-bright/30 bg-gradient-to-br from-samurai-dark to-samurai-navy">
+                    <h5 class="text-xs font-bold uppercase tracking-widest text-samurai-bright mb-2">DEVELOPER CONTACT</h5>
+                    <h6 class="text-xl font-bold text-white mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-code text-samurai-accent"></i>
+                        ข้อมูลผู้พัฒนาเว็บ
+                    </h6>
+                    
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-user text-blue-400 w-5"></i>
+                            <span class="text-gray-300 font-medium">ผู้พัฒนา: <strong class="text-white">ภูริวัฒ อุปวัฒนานันท์ (Phuriwat Upawatthananun)</strong></span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fa-solid fa-phone text-emerald-400 w-5 mt-1"></i>
+                            <div class="text-gray-300">
+                                <div>เบอร์โทรศัพท์ติดต่อ:</div>
+                                <div class="font-mono text-white text-base font-bold flex flex-wrap gap-2 mt-0.5">
+                                    <a href="tel:0659364840" class="hover:text-samurai-bright underline decoration-samurai-bright/40">0659364840</a>,
+                                    <a href="tel:0830773124" class="hover:text-samurai-bright underline decoration-samurai-bright/40">0830773124</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Direct Social Media Links -->
+                        <div class="pt-3 border-t border-gray-800 flex items-center gap-3">
+                            <a href="https://www.facebook.com/phuriwatupa.upawatthananun/" target="_blank" class="flex-1 py-2 px-3 rounded-lg bg-blue-600/20 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 text-center font-semibold transition-all flex items-center justify-center gap-2 text-xs">
+                                <i class="fa-brands fa-facebook text-base"></i> Facebook
+                            </a>
+                            <a href="https://www.instagram.com/phuriwat_xzupz/" target="_blank" class="flex-1 py-2 px-3 rounded-lg bg-pink-600/20 hover:bg-pink-600 text-pink-400 hover:text-white border border-pink-500/30 text-center font-semibold transition-all flex items-center justify-center gap-2 text-xs">
+                                <i class="fa-brands fa-instagram text-base"></i> Instagram
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+                <p>&copy; 2026 SAMURAI BLUE Fan Portal. Designed & Developed by ภูริวัฒ อุปวัฒนานันท์ (Phuriwat Upawatthananun)</p>
+                <div class="flex gap-4 text-lg">
+                    <a href="https://www.facebook.com/phuriwatupa.upawatthananun/" target="_blank" class="hover:text-blue-500 transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/phuriwat_xzupz/" target="_blank" class="hover:text-pink-500 transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const players = [
+            {
+                id: 1,
+                number: 6,
+                nameTh: "วาตารุ เอ็นโดะ",
+                nameEn: "Wataru Endo",
+                position: "MF",
+                posLabel: "กองกลาง (กัปตันทีม)",
+                club: "ลิเวอร์พูล (Liverpool FC)",
+                age: 31,
+                caps: 65,
+                goals: 3,
+                image: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80",
+                description: "กัปตันทีมชาติญี่ปุ่นชุดปัจจุบัน ผู้นำในแดนกลางที่มีความดุดัน แข็งแกร่งในการตัดเกม และมีความสามารถอ่านเกมระดับโลก"
+            },
+            {
+                id: 2,
+                number: 7,
+                nameTh: "คาโอรุ มิโตมะ",
+                nameEn: "Kaoru Mitoma",
+                position: "MF",
+                posLabel: "กองกลาง / ปีกซ้าย",
+                club: "ไบรท์ตัน (Brighton & Hove Albion)",
+                age: 27,
+                caps: 24,
+                goals: 8,
+                image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80",
+                description: "ปีกจรวดผู้เชี่ยวชาญการเลี้ยงบอลทลายแนวรับคู่แข่ง สร้างความปั่นป่วนให้กองหลังในพรีเมียร์ลีกอังกฤษ"
+            },
+            {
+                id: 3,
+                number: 20,
+                nameTh: "ทาเคฟุสะ คุโบะ",
+                nameEn: "Takefusa Kubo",
+                position: "FW",
+                posLabel: "กองหน้า / ปีกขวา",
+                club: "เรอัล โซเซียดาด (Real Sociedad)",
+                age: 23,
+                caps: 38,
+                goals: 5,
+                image: "https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=600&q=80",
+                description: "อัจฉริยะลูกหนังเจ้าของฉายา 'เมสซี่ญี่ปุ่น' มีความคล่องตัวสูง จินตนาการในการทำเกมรุก และทักษะเฉพาะตัวสูง"
+            },
+            {
+                id: 4,
+                number: 16,
+                nameTh: "ทาเคฮิโระ โทมิยาสุ",
+                nameEn: "Takehiro Tomiyasu",
+                position: "DF",
+                posLabel: "กองหลังตัวกลาง / แบ็ก",
+                club: "อาร์เซน่อล (Arsenal FC)",
+                age: 25,
+                caps: 42,
+                goals: 1,
+                image: "https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=600&q=80",
+                description: "ปราการหลังสารพัดประโยชน์ระดับท็อปของยุโรป เล่นได้ทุกตำแหน่งในแนวรับ มีความแข็งแกร่งและนิ่งสงบ"
+            },
+            {
+                id: 5,
+                number: 9,
+                nameTh: "อายาเสะ อุเอดะ",
+                nameEn: "Ayase Ueda",
+                position: "FW",
+                posLabel: "กองหน้าตัวเป้า",
+                club: "เฟเยนูร์ด (Feyenoord)",
+                age: 25,
+                caps: 28,
+                goals: 11,
+                image: "https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&w=600&q=80",
+                description: "กองหน้าตัวเป้าคมกริบ มีสัญชาตญาณการพังประตูยอดเยี่ยมและการวิ่งทำทางที่มีประสิทธิภาพสูง"
+            },
+            {
+                id: 6,
+                number: 1,
+                nameTh: "ไซออน ซูซูกิ",
+                nameEn: "Zion Suzuki",
+                position: "GK",
+                posLabel: "ผู้รักษาประตู",
+                club: "ปาร์มา (Parma Calcio)",
+                age: 22,
+                caps: 14,
+                goals: 0,
+                image: "https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=600&q=80",
+                description: "ผู้รักษาประตูดาวรุ่งอนาคตไกล เจ้าของปฏิกิริยาป้องกันประตูรวดเร็วและความมั่นใจในการออกบอล"
+            }
+        ];
+
+        function renderPlayers(filter = 'all') {
+            const grid = document.getElementById('playersGrid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'all' 
+                ? players 
+                : players.filter(p => p.position === filter);
+
+            filtered.forEach(player => {
+                const card = document.createElement('div');
+                card.className = "glass-card rounded-3xl overflow-hidden group hover:border-samurai-bright transition-all duration-300 flex flex-col justify-between cursor-pointer shadow-lg";
+                card.onclick = () => openPlayerModal(player.id);
+
+                card.innerHTML = `
+                    <div class="relative h-64 overflow-hidden bg-samurai-navy">
+                        <div class="absolute top-2 right-3 text-6xl font-black text-white/15 heading-font select-none group-hover:text-samurai-bright/30 transition-colors">
+                            #${player.number}
+                        </div>
+                        <img src="${player.image}" alt="${player.nameTh}" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500 opacity-90" onerror="this.src='https://placehold.co/600x800/002D72/FFFFFF?text=${encodeURIComponent(player.nameEn)}'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-samurai-navy via-transparent to-transparent"></div>
+                        <span class="absolute bottom-3 left-3 px-3 py-1 rounded-md bg-samurai-bright/80 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider">
+                            ${player.position}
+                        </span>
+                    </div>
+
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="text-xs text-gray-400 font-medium mb-1">${player.club}</div>
+                            <h4 class="text-xl font-bold text-white group-hover:text-samurai-bright transition-colors">${player.nameTh}</h4>
+                            <div class="text-xs text-gray-400 font-sans tracking-wide">${player.nameEn}</div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-gray-800 flex items-center justify-between text-xs text-gray-300">
+                            <span>ลงเล่น: <strong>${player.caps} นัด</strong></span>
+                            <span>ประตู: <strong>${player.goals} ประตู</strong></span>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterPlayers(pos) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-samurai-bright', 'text-white', 'border-samurai-bright');
+                btn.classList.add('bg-samurai-dark', 'text-gray-300', 'border-gray-700');
+            });
+
+            event.target.classList.remove('bg-samurai-dark', 'text-gray-300', 'border-gray-700');
+            event.target.classList.add('bg-samurai-bright', 'text-white', 'border-samurai-bright');
+
+            renderPlayers(pos);
+        }
+
+        function openPlayerModal(id) {
+            const player = players.find(p => p.id === id);
+            if (!player) return;
+
+            const modal = document.getElementById('playerModal');
+            const modalContent = document.getElementById('modalContent');
+
+            modalContent.innerHTML = `
+                <div class="relative">
+                    <button onclick="closePlayerModal()" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-samurai-accent transition-colors">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="${player.image}" class="w-full h-full object-cover object-top" onerror="this.src='https://placehold.co/600x800/002D72/FFFFFF?text=${encodeURIComponent(player.nameEn)}'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-samurai-dark via-samurai-dark/40 to-transparent"></div>
+                        <div class="absolute bottom-4 left-6">
+                            <span class="text-xs px-2.5 py-1 bg-samurai-accent text-white font-bold rounded">#${player.number}</span>
+                            <h3 class="text-3xl font-extrabold text-white mt-1 heading-font">${player.nameTh}</h3>
+                            <p class="text-sm text-gray-300">${player.nameEn}</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 space-y-4">
+                        <div class="grid grid-cols-2 gap-3 text-center">
+                            <div class="bg-samurai-navy p-3 rounded-xl border border-white/5">
+                                <div class="text-xs text-gray-400">ตำแหน่ง</div>
+                                <div class="text-sm font-bold text-white mt-0.5">${player.posLabel}</div>
+                            </div>
+                            <div class="bg-samurai-navy p-3 rounded-xl border border-white/5">
+                                <div class="text-xs text-gray-400">สโมสรต้นสังกัด</div>
+                                <div class="text-sm font-bold text-blue-400 mt-0.5">${player.club}</div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div class="bg-samurai-navy p-2.5 rounded-xl border border-white/5">
+                                <div class="text-xs text-gray-400">อายุ</div>
+                                <div class="text-lg font-bold text-white heading-font">${player.age} ปี</div>
+                            </div>
+                            <div class="bg-samurai-navy p-2.5 rounded-xl border border-white/5">
+                                <div class="text-xs text-gray-400">ลงเล่นทีมชาติ</div>
+                                <div class="text-lg font-bold text-emerald-400 heading-font">${player.caps} นัด</div>
+                            </div>
+                            <div class="bg-samurai-navy p-2.5 rounded-xl border border-white/5">
+                                <div class="text-xs text-gray-400">ประตูที่ยิงได้</div>
+                                <div class="text-lg font-bold text-samurai-accent heading-font">${player.goals} ประตู</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h5 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">ข้อมูล & สไตล์การเล่น</h5>
+                            <p class="text-sm text-gray-300 leading-relaxed">${player.description}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            modal.classList.remove('hidden');
+        }
+
+        function closePlayerModal() {
+            document.getElementById('playerModal').classList.add('hidden');
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            } else {
+                menuIcon.className = 'fa-solid fa-xmark text-2xl';
+            }
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.className = 'fa-solid fa-bars text-2xl';
+            });
+        });
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('playerModal');
+            if (event.target === modal) {
+                closePlayerModal();
+            }
+        }
+
+        window.onload = function() {
+            renderPlayers('all');
+        };
+    </script>
+</body>
+</html>
